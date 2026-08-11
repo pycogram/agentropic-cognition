@@ -1,4 +1,4 @@
-use z_cognition::prelude::*;
+use cognition::prelude::*;
 
 #[test]
 fn create_action() {
