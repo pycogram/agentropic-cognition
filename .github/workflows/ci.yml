@@ -18,13 +18,13 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
       with:
-        path: z-cognition
+        path: cognition
     
-    - name: Checkout z-core
+    - name: Checkout agent-core
       uses: actions/checkout@v3
       with:
-        repository: ZeroicAI/z-core
-        path: z-core
+        repository: RustyAI/agent-core
+        path: agent-core
     
     - name: Install Rust toolchain
       uses: dtolnay/rust-toolchain@stable
@@ -34,22 +34,22 @@ jobs:
     - name: Cache dependencies
       uses: Swatinem/rust-cache@v2
       with:
-        workspaces: z-cognition
+        workspaces: cognition
     
     - name: Check formatting
-      working-directory: z-cognition
+      working-directory: cognition
       run: cargo fmt --all -- --check
     
     - name: Build
-      working-directory: z-cognition
+      working-directory: cognition
       run: cargo build --verbose
     
     - name: Run Clippy
-      working-directory: z-cognition
+      working-directory: cognition
       run: cargo clippy --all-targets --all-features -- -D warnings
     
     - name: Run tests
-      working-directory: z-cognition
+      working-directory: cognition
       run: cargo test --verbose
 
   test-windows:
@@ -58,16 +58,16 @@ jobs:
     steps:
     - uses: actions/checkout@v3
       with:
-        path: z-cognition
+        path: cognition
     - uses: actions/checkout@v3
       with:
-        repository: ZeroicAI/z-core
-        path: z-core
+        repository: RustyAI/agent-core
+        path: agent-core
     - uses: dtolnay/rust-toolchain@stable
     - uses: Swatinem/rust-cache@v2
       with:
-        workspaces: z-cognition
-    - working-directory: z-cognition
+        workspaces: cognition
+    - working-directory: cognition
       run: cargo test --verbose
 
   test-macos:
@@ -76,14 +76,14 @@ jobs:
     steps:
     - uses: actions/checkout@v3
       with:
-        path: z-cognition
+        path: cognition
     - uses: actions/checkout@v3
       with:
-        repository: ZeroicAI/z-core
-        path: z-core
+        repository: RustyAI/agent-core
+        path: agent-core
     - uses: dtolnay/rust-toolchain@stable
     - uses: Swatinem/rust-cache@v2
       with:
-        workspaces: z-cognition
-    - working-directory: z-cognition
+        workspaces: cognition
+    - working-directory: cognition
       run: cargo test --verbose
