@@ -17,5 +17,5 @@ pub use crate::decision::UtilityFunction;
 // Error re-export
 pub use crate::CognitionError;
 
-// Re-export from core
-pub use z_core::prelude::*;
+// Re-export from agent-core
+pub use agent_core::prelude::*;
